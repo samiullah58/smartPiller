@@ -1,9 +1,10 @@
-const mongoose = require("mongoose");
 const express = require("express");
 require("dotenv").config();
+const mongoose = require("mongoose");
 
 const app = express();
 const PORT = process.env.PORT;
+const dbURI = process.env.MONGODB_CON_STRING; // Access the environment variable here
 
 app.get("/", (req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -14,7 +15,6 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    const dbURI = process.env.MONGODB_CON_STRING; // Access the environment variable here
     await mongoose.connect(dbURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
