@@ -1,4 +1,4 @@
-const { Property, validate } = require("../model/properties");
+const { Property, validate } = require("../model/property");
 const express = require("express");
 const router = express.Router();
 router.use(express.json());
@@ -13,44 +13,38 @@ router.post("/", async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   const {
-    name,
-    units,
+    propertyName,
+    numberOfUnits,
     city,
     address,
-    unitName,
-    bedRoom,
-    baths,
-    kitchen,
+    item,
     generalRent,
     securityDeposit,
     lateFee,
     incidentReceipt,
     rentType,
     description,
-    propertyImage,
+    image
   } = req.body;
 
   const property = new Property({
-    name: name,
-    units: units,
+    propertyName: propertyName,
+    numberOfUnits: numberOfUnits,
     city: city,
     address: address,
-    unitName: unitName,
-    bedRoom: bedRoom,
-    baths: baths,
-    kitchen: kitchen,
+    item: item,
     generalRent: generalRent,
     securityDeposit: securityDeposit,
     lateFee: lateFee,
     incidentReceipt: incidentReceipt,
     rentType: rentType,
     description: description,
-    propertyImage: propertyImage,
+    image: image,
   });
 
   await property.save();
 
-  res.send(property);
+  res.json({message: "property successfuly added", data: property});
 });
 
 router.put("/:id", async (req, res) => {
@@ -59,21 +53,18 @@ router.put("/:id", async (req, res) => {
   let property = await Property.findByIdAndUpdate(
     req.params.id,
     {
-      name: req.body.name,
-      units: req.body.units,
+      propertyName: req.body.propertyName,
+      numberOfUnits: req.body.numberOfUnits,
       city: req.body.city,
       address: req.body.address,
-      unitName: req.body.unitName,
-      bedRoom: req.body.bedRoom,
-      baths: req.body.baths,
-      kitchen: req.body.kitchen,
+      item: req.body.item,
       generalRent: req.body.generalRent,
       securityDeposit: req.body.securityDeposit,
       lateFee: req.body.lateFee,
       incidentReceipt: req.body.incidentReceipt,
       rentType: req.body.rentType,
       description: req.body.description,
-      propertyImage: req.body.propertyImage,
+      image: req.body.image,
     },
     {
       new: true,
