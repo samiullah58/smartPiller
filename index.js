@@ -6,8 +6,8 @@ const express = require("express");
 
 const app = express();
 dotenv.config().parsed;
-const port = process.env.PORT;
-const dbUri = process.env.URI;
+// const port = process.env.PORT;
+// const dbUri = process.env.URI;
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,13 +21,10 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect(
-      "mongodb+srv://samiullahbcs5th5450:kBYSbcpujf7rWPJp@cluster0.awsc1pv.mongodb.net/smartPiller?retryWrites=true&w=majority",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
+    await mongoose.connect(process.env.URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     // console.log("dbUri:", dbUri);
     console.log("Connected to MongoDB");
   } catch (err) {
@@ -36,6 +33,6 @@ async function connectToDatabase() {
 }
 
 connectToDatabase();
-app.listen(3000, () => {
-  console.log(`Server started on port: ${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server started on port: ${process.env.PORT}`);
 });
