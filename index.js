@@ -1,10 +1,10 @@
-const dotenv = require("dotenv");
+const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const express = require("express");
 
-dotenv.config();
+require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 // const dbUri = process.env.URI;
 const port = process.env.PORT;
