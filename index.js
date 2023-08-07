@@ -23,7 +23,7 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    console.log("MongoDB URI:", process.env.URI);
+    // console.log("MongoDB URI:", process.env.URI);
     await mongoose.connect(process.env.URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
