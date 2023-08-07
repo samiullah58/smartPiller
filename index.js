@@ -1,10 +1,10 @@
-require("dotenv").config();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const express = require("express");
-const app = express();
+require("dotenv").config();
 
+const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,7 +23,9 @@ async function connectToDatabase() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log(process.env.MONGODB_CON_STRING);
+    console.log("MONGODB_CON_STRING:", process.env.MONGODB_CON_STRING);
+    console.log("PORT:", process.env.PORT);
+    console.log("JWTPRIVATEKEY:", process.env.JWTPRIVATEKEY);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
