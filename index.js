@@ -21,11 +21,14 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect(dbUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("dbUri:", dbUri);
+    await mongoose.connect(
+      "mongodb+srv://samiullahbcs5th5450:kBYSbcpujf7rWPJp@cluster0.awsc1pv.mongodb.net/smartPiller?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
+    // console.log("dbUri:", dbUri);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
