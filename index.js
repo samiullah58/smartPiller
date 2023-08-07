@@ -4,8 +4,9 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const express = require("express");
 
+dotenv.config();
+
 const app = express();
-dotenv.config().parsed;
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
