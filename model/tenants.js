@@ -39,7 +39,7 @@ const tenantsSchema = new mongoose.Schema({
     required: true,
   },
   rentPaid: {
-    type: Number,
+    type: String,
     required: true,
   },
   currentRent: {
@@ -65,7 +65,7 @@ function validateTenants(tenants) {
     familyNumber: Joi.number().required(),
     property: Joi.string().required(),
     unit: Joi.number().required(),
-    rentPaid: Joi.number().required(),
+    rentPaid: Joi.string().required(),
     currentRent: Joi.number().required(),
     status: Joi.string().required(),
   });
