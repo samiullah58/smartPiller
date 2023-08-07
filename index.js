@@ -25,7 +25,7 @@ async function connectToDatabase() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log("MONGODB_CON_STRING:", process.env.URI);
+    console.log("dbUri:", process.env.URI);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
