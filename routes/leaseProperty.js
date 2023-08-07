@@ -27,6 +27,7 @@ router.post("/", async (req, res) => {
     incidentReceipt,
     rentType,
     description,
+    image
   } = req.body;
 
   const property = new Property({
@@ -44,6 +45,7 @@ router.post("/", async (req, res) => {
     incidentReceipt: incidentReceipt,
     rentType: rentType,
     description: description,
+    image: image,
   });
 
   await property.save();
@@ -71,6 +73,7 @@ router.put("/:id", async (req, res) => {
       incidentReceipt: req.body.incidentReceipt,
       rentType: req.body.rentType,
       description: req.body.description,
+      image: req.body.image,
     },
     { new: true }
   );

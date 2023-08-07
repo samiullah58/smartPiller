@@ -13,6 +13,7 @@ router.post("/", async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   const {
+    image,
     firstName,
     lastName,
     contactNumber,
@@ -27,6 +28,7 @@ router.post("/", async (req, res) => {
   } = req.body;
 
   const tenants = await new Tenants({
+    image: image,
     firstName: firstName,
     lastName: lastName,
     contactNumber: contactNumber,
@@ -50,6 +52,7 @@ router.put("/:id", async (req, res) => {
   const tenants = await Tenants.findByIdAndUpdate(
     req.params.id,
     {
+      image: req.body.image,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       contactNumber: req.body.contactNumber,

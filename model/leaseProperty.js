@@ -74,6 +74,10 @@ const leasePropertySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    required: true
+  }
 });
 
 const LeaseProperty = new mongoose.model("LeaseProperty", leasePropertySchema);
@@ -94,6 +98,7 @@ function validationleaseProperty(leaseProperty) {
     incidentReceipt: Joi.string().required(),
     rentType: Joi.string().required(),
     description: Joi.string().required(),
+    image: Joi.string().required()
   });
   return schema.validate(leaseProperty);
 }

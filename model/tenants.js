@@ -2,6 +2,10 @@ const Joi = require("joi");
 const mongoose = require("mongoose");
 
 const tenantsSchema = new mongoose.Schema({
+  image: {
+    type: String,
+    required: true
+  },
   firstName: {
     type: String,
     required: true,
@@ -52,6 +56,7 @@ const Tenants = new mongoose.model("Tenants", tenantsSchema);
 
 function validateTenants(tenants) {
   const schema = Joi.object({
+    image: Joi.string().required(),
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
     contactNumber: Joi.number().required(),
