@@ -1,6 +1,6 @@
+const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
 
@@ -9,6 +9,8 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT;
+const dbUri = process.env.URI;
+dotenv.config();
 
 app.get("/", (req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -19,11 +21,11 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect(process.env.MONGODB_CON_STRING, {
+    await mongoose.connect(dbUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log("MONGODB_CON_STRING:", process.env.MONGODB_CON_STRING);
+    console.log("MONGODB_CON_STRING:", process.env.URI);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
