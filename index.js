@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT;
-const dbUri = process.env.URI;
+// const dbUri = process.env.URI;
 
 app.get("/", (req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -21,7 +21,7 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect(dbUri, {
+    await mongoose.connect(process.env.URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
