@@ -8,9 +8,9 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
+dotenv.config();
 const PORT = process.env.PORT;
 const dbUri = process.env.URI;
-dotenv.config();
 
 app.get("/", (req, res) => {
   res.setHeader("Content-Type", "application/json");
