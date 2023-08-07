@@ -6,8 +6,6 @@ const express = require("express");
 
 const app = express();
 dotenv.config().parsed;
-// const port = process.env.PORT;
-// const dbUri = process.env.URI;
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,7 +23,6 @@ async function connectToDatabase() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    // console.log("dbUri:", dbUri);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
