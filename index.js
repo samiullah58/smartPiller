@@ -8,8 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
-// const PORT = process.env.PORT;
-// const dbURI = process.env.MONGODB_CON_STRING; // Access the environment variable here
+const PORT = process.env.PORT;
+const dbURI = process.env.MONGODB_CON_STRING; // Access the environment variable here
 
 app.get("/", (req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -20,13 +20,10 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect(
-      "mongodb+srv://samiullahbcs5th5450:4AXD84NKo5l2Rquo@cluster0.awsc1pv.mongodb.net/smartPiller?retryWrites=true&w=majority",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
+    await mongoose.connect(dbURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
@@ -35,8 +32,8 @@ async function connectToDatabase() {
 
 connectToDatabase()
   .then(() => {
-    app.listen(4000, () => {
-      console.log(`Server started on port: 4000`);
+    app.listen(PORT, () => {
+      console.log(`Server started on port: ${PORT}`);
     });
   })
   .catch((error) => {
