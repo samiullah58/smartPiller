@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const express = require("express");
 
-dotenv.config();
+dotenv.config({ path: __dirname + "/.env" });
 
 const app = express();
 app.use(cors());
@@ -20,7 +20,8 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect("this is the env", process.env.URI, {
+    console.log("MongoDB URI:", process.env.URI);
+    await mongoose.connect(process.env.URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
