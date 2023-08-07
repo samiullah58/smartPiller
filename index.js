@@ -24,8 +24,6 @@ async function connectToDatabase() {
       useUnifiedTopology: true,
     });
     console.log("MONGODB_CON_STRING:", process.env.MONGODB_CON_STRING);
-    console.log("PORT:", process.env.PORT);
-    console.log("JWTPRIVATEKEY:", process.env.JWTPRIVATEKEY);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
