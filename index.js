@@ -9,7 +9,6 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT;
-const dbURI = process.env.MONGODB_CON_STRING; // Access the environment variable here
 
 app.get("/", (req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -20,7 +19,7 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect(dbURI, {
+    await mongoose.connect(process.env.MONGODB_CON_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
