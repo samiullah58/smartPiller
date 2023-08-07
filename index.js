@@ -36,6 +36,6 @@ async function connectToDatabase() {
 }
 
 connectToDatabase();
-app.listen(port, () => {
+app.listen(3000, () => {
   console.log(`Server started on port: ${port}`);
 });
