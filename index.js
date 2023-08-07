@@ -7,7 +7,7 @@ const express = require("express");
 dotenv.config();
 
 // const dbUri = process.env.URI;
-// const port = process.env.PORT;
+const port = process.env.PORT;
 
 const app = express();
 app.use(cors());
