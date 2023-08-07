@@ -1,5 +1,8 @@
 const express = require("express");
 const properties = require("../routes/property");
+const leaseProperty = require("../routes/leaseProperty");
+const tenants = require("../routes/tenants");
+const maintains = require("../routes/maintains");
 const users = require("../routes/user");
 const auth = require("../routes/auth");
 
@@ -8,4 +11,7 @@ module.exports = function (app) {
   app.use("/api/property", properties);
   app.use("/api/users", users);
   app.use("/api/auth", auth);
+  app.use("/api/leaseProperty", leaseProperty);
+  app.use("/api/tenants", tenants);
+  app.use("/api/maintains", maintains);
 };

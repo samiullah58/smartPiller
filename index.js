@@ -1,11 +1,13 @@
-const cors = require('cors');
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
 
 const app = express();
 app.use(cors());
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({ limit: "10mb" }));
+app.use(bodyParser.urlencoded({ extended: true }));
 // const PORT = process.env.PORT;
 // const dbURI = process.env.MONGODB_CON_STRING; // Access the environment variable here
 
