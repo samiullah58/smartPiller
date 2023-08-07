@@ -6,7 +6,7 @@ const express = require("express");
 
 const app = express();
 dotenv.config().parsed;
-const PORT = process.env.PORT;
+const port = process.env.PORT;
 const dbUri = process.env.URI;
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
@@ -33,6 +33,6 @@ async function connectToDatabase() {
 }
 
 connectToDatabase();
-app.listen(PORT, () => {
-  console.log(`Server started on port: ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server started on port: ${port}`);
 });
