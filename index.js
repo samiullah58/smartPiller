@@ -30,12 +30,7 @@ async function connectToDatabase() {
   }
 }
 
-connectToDatabase()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server started on port: ${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+connectToDatabase();
+app.listen(PORT, () => {
+  console.log(`Server started on port: ${PORT}`);
+});
