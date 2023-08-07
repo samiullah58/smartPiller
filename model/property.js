@@ -66,7 +66,7 @@ const propertySchema = new mongoose.Schema({
     }
 });
 
-const Properties = new mongoose.model("Properties", propertySchema);
+const Properties = new mongoose.model("Property", propertySchema);
 
 function validationProperty(property) {
   const schema = Joi.object({

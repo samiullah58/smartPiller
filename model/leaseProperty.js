@@ -76,7 +76,7 @@ const leasePropertySchema = new mongoose.Schema({
   },
 });
 
-const LeaseProperty = new mongoose.model("leaseProperty", leasePropertySchema);
+const LeaseProperty = new mongoose.model("LeaseProperty", leasePropertySchema);
 
 function validationleaseProperty(leaseProperty) {
   const schema = Joi.object({

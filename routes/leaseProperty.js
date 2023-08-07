@@ -82,7 +82,7 @@ router.put("/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const property = await Property.findById(req.params.id);
   if (!property)
-    return res.status(404).send("property not found with the given id.");
+    return res.status(404).send("Property not found with the given id.");
   res.send(property);
 });
 

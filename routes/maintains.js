@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
   });
   await maintains.save();
   res.json({
-    message: "maintains has been added successfuly.",
+    message: "Maintains has been added successfuly.",
     data: maintains,
   });
 });
@@ -49,9 +49,9 @@ router.put("/:id", async (req, res) => {
     }
   );
   if (!maintains)
-    return res.status(404).send("maintains not found with the given id.");
+    return res.status(404).send("Maintains not found with the given id.");
   res.json({
-    message: "maintains has been added successfuly. ",
+    message: "Maintains has been added successfuly. ",
     data: maintains,
   });
 });
@@ -59,14 +59,14 @@ router.put("/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const maintains = await Maintains.findById(req.params.id);
   if (!maintains)
-    return res.status(404).send("maintains not found with the given id.");
+    return res.status(404).send("Maintains not found with the given id.");
   res.send(maintains);
 });
 
 router.delete("/:id", async (req, res) => {
   const maintians = await Maintains.findByIdAndDelete(req.params.id);
   if (!maintians)
-    return res.status(404).send("maintains not found with the given id.");
+    return res.status(404).send("Maintains not found with the given id.");
   res.send("Miantains has been deleted successfuly.");
 });
 

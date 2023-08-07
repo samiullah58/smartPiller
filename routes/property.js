@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
 
   await property.save();
 
-  res.json({ message: "property successfuly added", data: property });
+  res.json({ message: "Property successfuly added", data: property });
 });
 
 router.put("/:id", async (req, res) => {
@@ -70,20 +70,20 @@ router.put("/:id", async (req, res) => {
       new: true,
     }
   );
-  if (!property) res.status(404).send("property not found");
+  if (!property) res.status(404).send("Property not found");
   res.send(property);
 });
 
 router.get("/:id", async (req, res) => {
   const property = await Property.findById(req.params.id);
-  if (!property) res.status(404).send("property not found");
+  if (!property) res.status(404).send("Property not found");
   res.send(property);
 });
 
 router.delete("/:id", async (req, res) => {
   const property = await Property.findByIdAndDelete(req.params.id);
-  if (!property) res.status(404).send("property is not found");
-  res.send("property successfuly deleted");
+  if (!property) res.status(404).send("Property is not found");
+  res.send("Property successfuly deleted");
 });
 
 module.exports = router;

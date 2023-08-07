@@ -13,14 +13,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.setHeader("Content-Type", "application/json");
-  res.send("this is smart piller");
+  res.send("This is smart piller");
 });
 
 require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
+    await mongoose.connect("mongodb+srv://samiullahbcs5th5450:pWyhHqqAzwANA8Fm@cluster0.awsc1pv.mongodb.net/smartPiller?retryWrites=true&w=majority", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -31,6 +31,6 @@ async function connectToDatabase() {
 }
 
 connectToDatabase();
-app.listen(process.env.PORT, () => {
-  console.log(`Server started on port: ${process.env.PORT}`);
+app.listen(3000, () => {
+  console.log(`Server started on port: 3000`);
 });
