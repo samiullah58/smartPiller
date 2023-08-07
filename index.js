@@ -20,7 +20,7 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect(process.env.URI, {
+    await mongoose.connect("this is the env", process.env.URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
