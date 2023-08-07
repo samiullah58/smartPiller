@@ -2,7 +2,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const express = require("express");
-require("dotenv").config({ path: ".env" });
+const dotenv = require("dotenv");
+dotenv.config(options, { path: ".env" });
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,7 @@ async function connectToDatabase() {
     await mongoose.connect(process.env.MONGODB_CON_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     });
     console.log("MONGODB_CON_STRING:", process.env.MONGODB_CON_STRING);
     console.log("Connected to MongoDB");
