@@ -1,10 +1,10 @@
+require("dotenv").config();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv").config();
-
+const express = require("express");
 const app = express();
+
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
