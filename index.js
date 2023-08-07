@@ -6,8 +6,8 @@ const express = require("express");
 
 dotenv.config();
 
-const dbUri = process.env.URI;
-const port = process.env.PORT;
+// const dbUri = process.env.URI;
+// const port = process.env.PORT;
 
 const app = express();
 app.use(cors());
@@ -23,8 +23,8 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    console.log("MongoDB URI:", dbUri);
-    await mongoose.connect(dbUri, {
+    console.log("MongoDB URI:", process.env.URI);
+    await mongoose.connect(process.env.URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
