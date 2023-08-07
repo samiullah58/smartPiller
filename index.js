@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const express = require("express");
 
-dotenv.config({ path: __dirname + "/.env" });
+dotenv.config();
 
 const app = express();
 app.use(cors());
