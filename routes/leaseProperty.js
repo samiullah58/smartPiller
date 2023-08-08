@@ -1,10 +1,10 @@
-const { Property, validate } = require("../model/leaseProperty");
+const { LeaseProperty, validate } = require("../model/leaseProperty");
 const express = require("express");
 const router = express.Router();
 router.use(express.json());
 
 router.get("/", async (req, res) => {
-  const property = await Property.find();
+  const property = await LeaseProperty.find();
   res.send(property);
 });
 
@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
     image,
   } = req.body;
 
-  const property = new Property({
+  const property = new LeaseProperty({
     propertyName: propertyName,
     numberOfUnits: numberOfUnits,
     city: city,
@@ -56,7 +56,7 @@ router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const property = await Property.findByIdAndUpdate(
+  const property = await LeaseProperty.findByIdAndUpdate(
     req.params.id,
     {
       propertyName: req.body.propertyName,
@@ -83,7 +83,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const property = await Property.findById(req.params.id);
+  const property = await LeaseProperty.findById(req.params.id);
   if (!property)
     return res.status(404).send("Property not found with the given id.");
   res.json({
@@ -93,7 +93,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const property = await Property.findByIdAndDelete(req.params.id);
+  const property = await LeaseProperty.findByIdAndDelete(req.params.id);
   if (!property)
     return res.status(404).send("Property not found with the given id.");
   res.json({ message: "Property has been deleted successfuly." });
