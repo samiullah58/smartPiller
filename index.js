@@ -8,6 +8,7 @@ dotenv.config({ path: __dirname + "/.env" });
 
 // const mongodbUri = process.env.MONGODB_URI;
 // const port = process.env.PORT || 3000;
+console.log(process.env.CYCLIC_DB);
 
 const app = express();
 app.use(cors());
