@@ -6,8 +6,8 @@ router.use(express.json());
 
 router.get("/", async (req, res) => {
   //   console.log();
-  const dashboard = await Dashboard.find();
-  res.json({ data: Property.length });
+  const dashboard = await Property.find();
+  res.json({ data: dashboard.length });
 });
 
 module.exports = router;
