@@ -35,6 +35,6 @@ async function connectToDatabase() {
 
 connectToDatabase().then(() => {
   app.listen(process.env.CYCLIC_PORT, () => {
-    console.log(`server is running on port: ${port}`);
+    console.log(`server is running on port: ${process.env.CYCLIC_PORT}`);
   });
 });
