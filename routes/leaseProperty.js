@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
     incidentReceipt,
     rentType,
     description,
-    image
+    image,
   } = req.body;
 
   const property = new Property({
@@ -86,14 +86,17 @@ router.get("/:id", async (req, res) => {
   const property = await Property.findById(req.params.id);
   if (!property)
     return res.status(404).send("Property not found with the given id.");
-  res.send(property);
+  res.json({
+    message: "Property has been updated successfuly.",
+    data: property,
+  });
 });
 
 router.delete("/:id", async (req, res) => {
   const property = await Property.findByIdAndDelete(req.params.id);
   if (!property)
     return res.status(404).send("Property not found with the given id.");
-  res.send("Property has been deleted successfuly.");
+  res.json({ message: "Property has been deleted successfuly." });
 });
 
 module.exports = router;

@@ -71,19 +71,22 @@ router.put("/:id", async (req, res) => {
     }
   );
   if (!property) res.status(404).send("Property not found");
-  res.send(property);
+  res.json({
+    message: "Property has been updated successfuly.",
+    data: property,
+  });
 });
 
 router.get("/:id", async (req, res) => {
   const property = await Property.findById(req.params.id);
   if (!property) res.status(404).send("Property not found");
-  res.send(property);
+  res.json({ data: property });
 });
 
 router.delete("/:id", async (req, res) => {
   const property = await Property.findByIdAndDelete(req.params.id);
   if (!property) res.status(404).send("Property is not found");
-  res.send("Property successfuly deleted");
+  res.json({ message: "Property successfuly deleted" });
 });
 
 module.exports = router;

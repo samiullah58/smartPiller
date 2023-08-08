@@ -78,14 +78,14 @@ router.get("/:id", async (req, res) => {
   const tenants = await Tenants.findById(req.params.id);
   if (!tenants)
     return res.status(404).send("Tenants not found with the given id.");
-  res.send(tenants);
+  res.json({ data: tenants });
 });
 
 router.delete("/:id", async (req, res) => {
   const tenants = await Tenants.findByIdAndDelete(req.params.id);
   if (!tenants)
     return res.status(404).send("Tenants not found with the given id.");
-  res.send("Tenant has been deleted successfuly.");
+  res.json({ message: "Tenant has been deleted successfuly." });
 });
 
 module.exports = router;
