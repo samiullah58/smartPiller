@@ -1,4 +1,3 @@
-const { Dashboard, validate } = require("../model/dashboard");
 const { Property } = require("../model/property");
 const { LeaseProperty } = require("../model/leaseProperty");
 const { Maintains } = require("../model/maintains");
