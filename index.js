@@ -6,8 +6,8 @@ const express = require("express");
 
 dotenv.config({ path: __dirname + "/.env" });
 
-const mongodbUri = process.env.MONGODB_URI;
-const port = process.env.PORT || 3000;
+// const mongodbUri = process.env.MONGODB_URI;
+// const port = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
@@ -23,7 +23,7 @@ require("./startup/route")(app);
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect(mongodbUri, {
+    await mongoose.connect(process.env.CYCLIC_DB, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -34,7 +34,7 @@ async function connectToDatabase() {
 }
 
 connectToDatabase().then(() => {
-  app.listen(port, () => {
+  app.listen(process.env.CYCLIC_PORT, () => {
     console.log(`server is running on port: ${port}`);
   });
 });
