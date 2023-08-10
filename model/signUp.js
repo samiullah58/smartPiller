@@ -29,9 +29,7 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 1024,
   },
-  isAdmin: {
-    type: Boolean,
-  },
+  role: String,
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -41,7 +39,7 @@ userSchema.methods.generateAuthToken = function () {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
-      isAdmin: this.isAdmin,
+      role: "user",
     },
     process.env.JWTPRIVATEKEY
   );
