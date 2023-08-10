@@ -50,18 +50,17 @@ userSchema.methods.generateAuthToken = function () {
 
 // Joi.extend(JoiPhoneNumber);
 
-// ********
+/*
+*** The below is for contactNumber formating ***
 
-// function validatePhoneNumber(phoneNumber) {
-//   const phoneNumberRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/; // Adjust the regex based on your phone number requirements
-//   return phoneNumber.match(phoneNumberRegex) !== null;
-// }
+function validatePhoneNumber(phoneNumber) {
+const phoneNumberRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/; // Adjust the regex based on your phone number requirements
+return phoneNumber.match(phoneNumberRegex) !== null;
+}
 
-// ********
+*/
 
 const User = new mongoose.model("User", userSchema);
-
-// ********
 
 function validationUser(user) {
   const schema = Joi.object({
@@ -89,29 +88,6 @@ function validationUser(user) {
 
   return schema.validate(user);
 }
-
-// ********
-
-// function validationUser(user) {
-//   const schema = Joi.object({
-//     firstName: Joi.string().required().min(5).max(50),
-//     lastName: Joi.string().required().min(5).max(50),
-//     email: Joi.string().required().email(),
-//     contactNumber: Joi.string()
-//       .phoneNumber({ format: "international", strict: true })
-//       .required(),
-//     password: Joi.string().required().min(5).max(1024),
-//     confirmPassword: Joi.string()
-//       .valid(Joi.ref("password"))
-//       .required()
-//       .label("Confirm password")
-//       .messages({
-//         "any.only": "{{#label}} does not match the password",
-//       }),
-//     isAdmin: Joi.boolean().required(),
-//   });
-//   return schema.validate(user);
-// }
 
 module.exports.User = User;
 module.exports.validate = validationUser;
