@@ -24,10 +24,6 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "User already registered." });
     }
 
-    if (req.body.password !== req.body.confirmPassword) {
-      return res.status(400).json({ message: "Password do not match" });
-    }
-
     const user = new User({
       ..._.pick(req.body, [
         "firstName",
