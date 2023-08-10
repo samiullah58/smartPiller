@@ -28,16 +28,16 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "Password do not match" });
     }
 
-    const user = new User(
-      _.pick(req.body, [
+    const user = new User({
+      ..._.pick(req.body, [
         "firstName",
         "lastName",
         "email",
         "contactNumber",
         "password",
-        "role",
-      ])
-    );
+      ]),
+      role: "user", // Set the default user role here
+    });
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
