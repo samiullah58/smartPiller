@@ -17,7 +17,16 @@ router.post("/", async (req, res) => {
 
   const token = user.generateAuthToken();
 
-  res.send(token);
+  res.json({
+    message: "User loged in successfuly",
+    data: {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    },
+    token,
+  });
 });
 
 function validate(req) {
