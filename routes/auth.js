@@ -17,8 +17,6 @@ router.post("/", async (req, res) => {
 
   const token = user.generateAuthToken();
 
-  console.log(user.firstName, user.role);
-
   res.json({
     message: "User logged in successfuly",
     data: {
