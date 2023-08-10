@@ -41,6 +41,7 @@ userSchema.methods.generateAuthToken = function () {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
+      contactNumber: this.contactNumber,
       role: this.role,
     },
     process.env.JWTPRIVATEKEY
