@@ -89,7 +89,7 @@ router.get("/:id", async (req, res) => {
   res.send(user);
 });
 
-router.delete("/:id", [auth, admin], async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const user = await User.findByIdAndDelete(req.params.id);
   if (!user) return res.status(404).send("User not found with the given id.");
 
