@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   const user = await User.find();
   res.send(user);
 });
