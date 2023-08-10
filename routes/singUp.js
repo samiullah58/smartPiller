@@ -35,6 +35,7 @@ router.post("/", async (req, res) => {
         "email",
         "contactNumber",
         "password",
+        "role",
       ])
     );
 

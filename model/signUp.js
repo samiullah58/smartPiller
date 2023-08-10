@@ -84,6 +84,7 @@ function validationUser(user) {
       .messages({
         "any.only": "{{#label}} does not match the password",
       }),
+    role: Joi.string("user"),
   });
 
   return schema.validate(user);
