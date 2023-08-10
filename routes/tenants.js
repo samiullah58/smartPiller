@@ -71,7 +71,7 @@ router.put("/:id", async (req, res) => {
   );
   if (!tenants)
     return res.status(404).send("Tenants not found with the given id.");
-  res.json({ message: "Tenant has been updated successfuly. ", data: tenants });
+  res.json({ message: "Tenant has been updated successfuly. " });
 });
 
 router.get("/:id", async (req, res) => {

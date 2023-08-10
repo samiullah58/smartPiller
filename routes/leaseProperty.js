@@ -79,7 +79,7 @@ router.put("/:id", async (req, res) => {
   );
   if (!property)
     return res.status(404).send("Propert not found with the given id");
-  res.send(property);
+  res.json({ message: "Lease Property updated successfuly." });
 });
 
 router.get("/:id", async (req, res) => {

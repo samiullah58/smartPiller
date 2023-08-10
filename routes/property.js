@@ -73,7 +73,6 @@ router.put("/:id", async (req, res) => {
   if (!property) res.status(404).send("Property not found");
   res.json({
     message: "Property has been updated successfuly.",
-    data: property,
   });
 });
 

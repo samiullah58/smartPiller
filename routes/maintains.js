@@ -52,7 +52,6 @@ router.put("/:id", async (req, res) => {
     return res.status(404).send("Maintains not found with the given id.");
   res.json({
     message: "Maintains has been updated successfuly. ",
-    data: maintains,
   });
 });
 
